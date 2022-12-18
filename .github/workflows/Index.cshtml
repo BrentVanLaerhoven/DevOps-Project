@@ -1,0 +1,28 @@
+﻿@using Contentful.Core.Models
+
+@model ContentfulCollection<ClothingPiece>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<environment include="Development">
+    <link rel="stylesheet" href="~/css/index.css" />
+</environment>
+
+<body>
+    <h1 class="text-center mb-5">ESSENTIALS</h1>
+    <p class="text-center"><span class="font-weight-bold"><font size="2">3 FOR THE PRICE OF 2 ON ALL ESSENTIALS.</font></span><br>
+    Add any 3 products from our essential collection to your bag.<br>
+    Get the lowest priced item for free.</p>
+
+<div class="row">
+    @foreach (var piece in Model) {
+        <br>
+        <div class="card m-4 p-4" style="width: 20rem;">
+            <img class="card-img-top" src="@piece.Photo.File.Url" height="240" width="300" alt="Card image cap">
+            <div class="card-body"><p class="card-text text-center">@piece.Type<br>€ @piece.Price.00</p></div>
+        </div>
+    }
+</div>
+</body>
